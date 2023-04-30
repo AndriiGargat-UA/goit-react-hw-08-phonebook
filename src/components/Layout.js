@@ -1,12 +1,20 @@
-import styled from 'styled-components';
+import { Outlet } from 'react-router-dom';
+import { AppBar } from './AppBar/AppBar';
+import { Suspense } from 'react';
 
-export const Layout = styled.div`
-  padding: 50px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 25px;
-  color: #662466;
-`;
+import { Container } from '@mui/material';
+
+export const Layout = () => {
+  return (
+    <Container
+      sx={{
+        width: '700px',
+      }}
+    >
+      <AppBar />
+      <Suspense fallback={null}>
+        <Outlet />
+      </Suspense>
+    </Container>
+  );
+};
